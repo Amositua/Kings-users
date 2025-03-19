@@ -1,0 +1,62 @@
+.user-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .user-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .user-table-wrapper {
+    overflow-x: auto;
+  }
+  
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .user-table th,
+  .user-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+  }
+  
+  .user-table th {
+    background: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .no-users {
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    color: #666;
+  }
+  
+  .id-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .file-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .file-link:hover {
+    text-decoration: underline;
+  }
+  
