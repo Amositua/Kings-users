@@ -11,7 +11,7 @@ const UserList = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/users");
+        const res = await axios.get("https://kings-backend-4diu.onrender.com/users");
         setUsers(res.data);
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -40,7 +40,7 @@ const UserList = () => {
     if (!window.confirm("Are you sure you want to delete this user?")) return;
 
     try {
-      await axios.delete(`http://localhost:8000/users/${id}`);
+      await axios.delete(`https://kings-backend-4diu.onrender.com/users/${id}`);
       setUsers(users.filter((user) => user._id !== id));
     } catch (error) {
       console.error("Error deleting user:", error);
@@ -97,7 +97,7 @@ const UserList = () => {
                     {user.idFileUrl ? (
                       user.idFileUrl.endsWith(".pdf") ? (
                         <a
-                          href={`http://localhost:8000${user.idFileUrl}`}
+                          href={`https://kings-backend-4diu.onrender.com${user.idFileUrl}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-500 underline"
@@ -106,7 +106,7 @@ const UserList = () => {
                         </a>
                       ) : (
                         <img
-                          src={`http://localhost:8000${user.idFileUrl}`}
+                          src={`https://kings-backend-4diu.onrender.com${user.idFileUrl}`}
                           alt="ID File"
                           className="h-16 mx-auto rounded-lg shadow"
                         />
