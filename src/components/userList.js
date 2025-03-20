@@ -2,24 +2,31 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const UserList = () => {
+  const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
   const [searchQuery, setSearchQuery] = useState(""); // Search input state
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 5; // Change this to adjust number of users per page
 
   // Fetch users from backend
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const res = await axios.get("https://kings-backend-4diu.onrender.com/users");
-        setUsers(res.data);
-      } catch (error) {
-        console.error("Error fetching users:", error);
-      }
-    };
+ useEffect(() => {
+  const fetchUsers = async () => {
+    setLoading(true); // Start loading
+    try {
+      const res = await axios.get("https://kings-backend-4diu.onrender.com/users");
+      setUsers(res.data);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    } finally {
+      setLoading(false); // Stop loading
+    }
+  };
 
-    fetchUsers();
-  }, []);
+  fetchUsers();
+}, []);
+
+
+
 
   // Filter users based on search query
   const filteredUsers = users.filter((user) =>
@@ -48,6 +55,7 @@ const UserList = () => {
   };
 
   return (
+    
     <div className="container mx-auto mt-10">
       <h2 className="text-2xl font-bold mb-5 text-center">Registered Users</h2>
 
@@ -63,6 +71,11 @@ const UserList = () => {
       </div>
 
       {/* Users Table */}
+      {loading ? (
+  <div className="flex justify-center my-10">
+    <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
+  </div>
+) : (
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-200 shadow-lg rounded-lg">
           <thead className="bg-gray-800 text-white">
@@ -105,11 +118,19 @@ const UserList = () => {
                           View PDF
                         </a>
                       ) : (
-                        <img
+                        <a
+                        href={`https://kings-backend-4diu.onrender.com${user.idFileUrl}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-500 underline"
+                      >
+                      <img
                           src={`https://kings-backend-4diu.onrender.com${user.idFileUrl}`}
                           alt="ID File"
                           className="h-16 mx-auto rounded-lg shadow"
                         />
+                      </a>
+                        
                       )
                     ) : (
                       "No File"
@@ -134,7 +155,7 @@ const UserList = () => {
             )}
           </tbody>
         </table>
-      </div>
+      </div>)}
 
       {/* Pagination */}
       {filteredUsers.length > usersPerPage && (
