@@ -1,12 +1,15 @@
 import React from "react";
-import UserList from "./components/userList";
+import UserTable from "./components/userTable";
 
-const App = () => {
+function App() {
   return (
-    <div className="bg-gray-50 min-h-screen flex justify-center">
-      <UserList />
+    <div className="min-h-screen bg-gray-100 p-5">
+      <div className=" mx-auto bg-white shadow-md rounded-lg p-6">
+        <h1 className="text-3xl font-bold text-gray-800">Admin Dashboard</h1>
+        <UserTable />
+      </div>
     </div>
   );
-};
+}
 
 export default App;

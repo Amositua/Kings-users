@@ -78,7 +78,7 @@ const UserList = () => {
 ) : (
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-200 shadow-lg rounded-lg">
-          <thead className="bg-gray-800 text-white">
+          <thead className="bg-gray-500 text-white">
             <tr>
             <th className="py-2 px-4 border">Name</th>
               <th className="py-2 px-4 border">Email</th>
