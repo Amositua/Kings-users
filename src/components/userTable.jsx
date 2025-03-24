@@ -92,7 +92,7 @@ const UserTable = () => {
            <td className="px-4 py-3">{user.lastName}</td>
            <td className="px-4 py-3">{user.email}</td>
            <td className="px-4 py-3">{user.gender}</td>
-           <td className="px-4 py-3">{user.phone}</td>
+           <td className="px-4 py-3">+{user.phone}</td>
            <td className="px-4 py-3">{user.country}</td>
            <td className="px-4 py-3">{user.state}</td>
            <td className="px-4 py-3">{user.city}</td>
@@ -145,7 +145,7 @@ const UserTable = () => {
                Approve
              </button>
              <button
-               className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700"
+               className="bg-red-500 text-white px-3 py-1 rounded mt-2 hover:bg-red-700"
                onClick={() => handleStatusUpdate(user._id, "rejected")}
              >
                Reject
